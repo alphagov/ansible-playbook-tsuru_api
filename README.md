@@ -1,38 +1,46 @@
-Role Name
+Tsuru API server
 =========
 
-A brief description of the role goes here.
+An ansible role to install a [Tsuru API](https://tsuru.readthedocs.org/en/latest/) server.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Only tested on Ubuntu 14.04.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+* `api_port` - Port upon which you wish to run the API server
+* `tsuru_api_internal_lb` - The hostname of the loadbalancer you wish to run tsuru behind.
+* `mongodb_host` - MongoDB hostname
+* `mongodb_port` - MongoDB server portnumber
+* ` gandalf_host_external` - External hostname of the Gandalf server
+* ` gandalf_port ` - The port number upon which you wish to run Gandalf
+* ` gandalf_host_internal ` - The internal hostname of the Gandalf server.
+* `hipache_host_external_lb` - The external Hipache hostname for loadbalancer.
+* `redis_host` - The redis hostname.
+* `redis_port` - The redis port.
+* ` docker_registry_host ` - The Docker registry hostname.
+* ` docker_registry_port ` - The Docker registry port.
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+* None
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+- hosts: tsuru-api
+  roles:
+    - role: tsuru_api
+
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+See `LICENSE` file.
