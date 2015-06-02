@@ -5,42 +5,42 @@ host: http://{{tsuru_api_internal_lb}}:{{api_port}}
 #tls-cert-file: /path/to/cert.pem
 #tls-key-file: /path/to/key.pem
 database:
-   url: {{mongodb_host}}:{{mongodb_port}}
-   name: tsuru
+  url: {{mongodb_host}}:{{mongodb_port}}
+  name: tsuru
 git:
   api-server: http://{{ gandalf_host_internal }}:{{ gandalf_port }}
   unit-repo: /home/application/current
   rw-host: http://{{ gandalf_host_external }}:{{ gandalf_port }}
 auth:
-   schema: native
-   user-registration: true
+  schema: native
+  user-registration: true
 provisioner: docker
 hipache:
-   domain: {{hipache_host_external_lb}}
-   redis-server: {{redis_host}}:{{redis_port}}
+  domain: {{hipache_host_external_lb}}
+  redis-server: {{redis_host}}:{{redis_port}}
 docker:
-   cluster:
-      storage: mongodb
-      mongo-url: {{ mongodb_host }}:{{ mongodb_port }}
-      mongo-database: cluster
-   registry: {{ docker_registry_host }}:{{ docker_registry_port }}
-   collection: docker
-   repository-namespace: tsuru
-   router: hipache
-   deploy-cmd: /var/lib/tsuru/deploy
-   segregate: false
-   run-cmd:
-     bin: /var/lib/tsuru/start
-     port: "8888"
-   ssh:
-     add-key-cmd: /var/lib/tsuru/add-key
-#     public-key: /home/ubuntu/.ssh/id_rsa.pub
-     user: ubuntu
+  cluster:
+    storage: mongodb
+    mongo-url: {{ mongodb_host }}:{{ mongodb_port }}
+    mongo-database: cluster
+  registry: {{ docker_registry_host }}:{{ docker_registry_port }}
+  collection: docker
+  repository-namespace: tsuru
+  router: hipache
+  deploy-cmd: /var/lib/tsuru/deploy
+  segregate: false
+  run-cmd:
+    bin: /var/lib/tsuru/start
+    port: "8888"
+  ssh:
+    add-key-cmd: /var/lib/tsuru/add-key
+#    public-key: /home/ubuntu/.ssh/id_rsa.pub
+    user: ubuntu
 queue: redis
 redis-queue:
-   host: {{redis_host}}
-   port: {{ redis_port}}
+  host: {{redis_host}}
+  port: {{ redis_port}}
 admin-team: admin
-# quota:
-#   units-per-app: 2
-#   apps-per-user: 2
+#quota:
+#  units-per-app: 2
+#  apps-per-user: 2
