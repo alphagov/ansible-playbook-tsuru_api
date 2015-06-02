@@ -37,9 +37,9 @@ routers:
     domain: {{hipache_host_external_lb}}
     redis-server: {{redis_host}}:{{redis_port}}
 queue: redis
-redis-queue:
-  host: {{redis_host}}
-  port: {{ redis_port}}
+pubsub:
+  redis-host: {{redis_host}}
+  redis-port: {{ redis_port}}
 admin-team: admin
 #quota:
 #  units-per-app: 2
