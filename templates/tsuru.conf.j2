@@ -8,9 +8,9 @@ database:
    url: {{mongodb_host}}:{{mongodb_port}}
    name: tsuru
 git:
+  api-server: http://{{ gandalf_host_internal }}:{{ gandalf_port }}
   unit-repo: /home/application/current
   rw-host: http://{{ gandalf_host_external }}:{{ gandalf_port }}
-  api-server: http://{{ gandalf_host_internal }}:{{ gandalf_port }}
 auth:
    schema: native
    user-registration: true
@@ -19,6 +19,10 @@ hipache:
    domain: {{hipache_host_external_lb}}
    redis-server: {{redis_host}}:{{redis_port}}
 docker:
+   cluster:
+      storage: mongodb
+      mongo-url: {{ mongodb_host }}:{{ mongodb_port }}
+      mongo-database: cluster
    registry: {{ docker_registry_host }}:{{ docker_registry_port }}
    collection: docker
    repository-namespace: tsuru
@@ -32,10 +36,6 @@ docker:
      add-key-cmd: /var/lib/tsuru/add-key
 #     public-key: /home/ubuntu/.ssh/id_rsa.pub
      user: ubuntu
-   cluster:
-      storage: mongodb
-      mongo-url: {{ mongodb_host }}:{{ mongodb_port }}
-      mongo-database: cluster
 queue: redis
 redis-queue:
    host: {{redis_host}}
