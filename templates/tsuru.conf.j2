@@ -14,9 +14,6 @@ auth:
   schema: native
   user-registration: true
 provisioner: docker
-hipache:
-  domain: {{hipache_host_external_lb}}
-  redis-server: {{redis_host}}:{{redis_port}}
 docker:
   cluster:
     storage: mongodb
@@ -34,6 +31,11 @@ docker:
     add-key-cmd: /var/lib/tsuru/add-key
 #    public-key: /home/ubuntu/.ssh/id_rsa.pub
     user: ubuntu
+routers:
+  hipache:
+    type: hipache
+    domain: {{hipache_host_external_lb}}
+    redis-server: {{redis_host}}:{{redis_port}}
 queue: redis
 redis-queue:
   host: {{redis_host}}
