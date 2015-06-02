@@ -11,40 +11,9 @@ git:
   unit-repo: /home/application/current
   rw-host: http://{{ gandalf_host_external }}:{{ gandalf_port }}
   api-server: http://{{ gandalf_host_internal }}:{{ gandalf_port }}
-#bucket-support: false
-#aws:
-#  access-key-id: access-id-here
-#  secret-access-key: secret-very-secret
-#  ec2:
-#    endpoint: https://ec2.us-east-1.amazonaws.com
-#  iam:
-#    endpoint: https://iam.amazonaws.com/
-#  s3:
-#    region-name: us-west-1
-#    endpoint: https://ec2.us-west-1.amazonaws.com
-#    bucketEndpoint: https://s3-us-west-1.amazonaws.com
-#    location-constraint: true
-#    lowercase-bucket: true
 auth:
    schema: native
    user-registration: true
-#provisioner: juju
-#juju:
-#  bootstrap-collection: juju_bootstrap
-#  charms-path: /home/charms
-#  units-collection: juju_units
-#  use-elb: false
-#  elb-endpoint: https://elasticloadbalancing.amazonaws.com
-#  elb-collection: juju_load_balancers
-#  elb-avail-zones:
-#    - us-west-1a
-#  elb-use-vpc: false
-#  elb-vpc-subnets:
-#    - network1
-#    - network2
-#  elb-vpc-secgroups:
-#    - secgroup1
-#    - secgroup2
 provisioner: docker
 hipache:
    domain: {{hipache_host_external_lb}}
@@ -56,10 +25,6 @@ docker:
    router: hipache
    deploy-cmd: /var/lib/tsuru/deploy
    segregate: false
-#   scheduler:
-#     redis-server: 127.0.0.1:6379
-#     redis-prefix: docker-cluster
-#     redis-password: s3cr3t
    run-cmd:
      bin: /var/lib/tsuru/start
      port: "8888"
@@ -67,12 +32,10 @@ docker:
      add-key-cmd: /var/lib/tsuru/add-key
 #     public-key: /home/ubuntu/.ssh/id_rsa.pub
      user: ubuntu
-#     sshd-path: /usr/sbin/sshd
    cluster:
       storage: mongodb
       mongo-url: {{ mongodb_host }}:{{ mongodb_port }}
       mongo-database: cluster
-# queue-server: "127.0.0.1:11300"
 queue: redis
 redis-queue:
    host: {{redis_host}}
