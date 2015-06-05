@@ -6,4 +6,3 @@ packages:
   - tsuru-server
   - tsuru-admin
   - tsuru-client
-  - jq
