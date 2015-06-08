@@ -1,4 +1,4 @@
-listen: "0.0.0.0:{{api_port}}"
+listen: "0.0.0.0:{{ tsuru_api_listen_port }}"
 host: {{ tsuru_api_url | mandatory }}
 #use-tls: true
 #tls-cert-file: /path/to/cert.pem
