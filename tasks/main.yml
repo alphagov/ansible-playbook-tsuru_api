@@ -26,7 +26,7 @@
 - name: Configure tsuru-admin command.
   shell: >
     tsuru-admin target-remove local;
-    tsuru-admin target-add local http://127.0.0.1:{{api_port}} -s
+    tsuru-admin target-add local http://127.0.0.1:{{ tsuru_api_listen_port }} -s
 
 - name: Wait for tsuru-server to be up
-  wait_for: port={{api_port}} timeout=60
+  wait_for: port={{ tsuru_api_listen_port }} timeout=60
