@@ -31,6 +31,9 @@ docker:
     add-key-cmd: /var/lib/tsuru/add-key
 #    public-key: /home/ubuntu/.ssh/id_rsa.pub
     user: ubuntu
+  healing:
+    active-monitoring-interval: {{ healing_active_monitoring_interval }}
+    heal-containers-timeout: {{ healing_heal_containers_timeout }}
 routers:
   hipache:
     type: hipache

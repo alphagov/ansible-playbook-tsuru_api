@@ -1,5 +1,8 @@
 ---
 # defaults file for tsuru_api
 
+healing_active_monitoring_interval: 10
+healing_heal_containers_timeout: 10
+
 tsuru_api_listen_port: 8080
 tsuru_api_listen_addr: "0.0.0.0"
