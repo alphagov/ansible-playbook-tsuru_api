@@ -12,6 +12,8 @@ Role Variables
 --------------
 
 * `api_port` - Port upon which you wish to run the API server
+* `healing_active_monitoring_interval` - Number of seconds between calls to `<server>/_ping` in each one of the docker nodes, [for more information check here](http://tsuru.readthedocs.org/en/stable/reference/config.html?highlight=unit#docker-healing-active-monitoring-interval)
+* `healing_heal_containers_timeout` - Number of seconds a container should be unresponsive before triggering the recreation of the container, [for more information check here](http://tsuru.readthedocs.org/en/stable/reference/config.html?highlight=unit#docker-healing-heal-containers-timeout)
 * `tsuru_api_internal_lb` - The hostname of the loadbalancer you wish to run tsuru behind.
 * `mongodb_host` - MongoDB hostname
 * `mongodb_port` - MongoDB server portnumber
