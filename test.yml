@@ -1,0 +1,23 @@
+---
+- hosts: all
+  sudo: yes
+  pre_tasks:
+     - name: Install MongoDB package
+       apt: name={{item}} state=present update_cache=yes
+       with_items:
+          - mongodb-server
+          - numactl
+  vars:
+    - tsuru_api_url: http://localhost
+    - mongodb_host: localhost
+    - mongodb_port: 27017
+    - gandalf_host_internal: localhost
+    - gandalf_host_external: localhost
+    - gandalf_port: 8081
+    - docker_registry_host: localhost
+    - docker_registry_port: 8082
+    - hipache_host_external_lb: localhost
+    - redis_host: localhost
+    - redis_port: 6379
+  roles:
+    - .
