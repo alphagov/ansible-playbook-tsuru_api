@@ -6,7 +6,11 @@
 
 - name: Install packages.
   apt: update_cache=true name="{{ item }}"
-  with_items: packages
+  with_items:
+    - python-software-properties
+    - "{% if tsuru_server_version is defined %}tsuru-server={{ tsuru_server_version }}{% else %}tsuru-server{% endif %}"
+    - "{% if tsuru_admin_version is defined %}tsuru-admin={{ tsuru_admin_version }}{% else %}tsuru-admin{% endif %}"
+    - "{% if tsuru_client_version is defined %}tsuru-client={{ tsuru_client_version }}{% else %}tsuru-client{% endif %}"
 
 - name: Copy configuration file.
   template: src=tsuru.conf.j2 dest=/etc/tsuru/tsuru.conf
