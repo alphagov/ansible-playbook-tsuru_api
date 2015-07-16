@@ -25,6 +25,9 @@ Role Variables
 * `redis_port` - The redis port.
 * ` docker_registry_host ` - The Docker registry hostname.
 * ` docker_registry_port ` - The Docker registry port.
+* `tsuru_server_version` - The version of the tsuru server package to be installed
+* `tsuru_client_version` - The version of the tsuru client package to be installed
+* `tsuru_admin_version` - The version of the tsuru admin package to be installed
 
 
 Dependencies
