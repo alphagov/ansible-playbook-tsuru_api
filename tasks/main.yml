@@ -2,7 +2,7 @@
 # tasks file for tsuru_api
 
 - name: Add tsuru repositories.
-  apt_repository: repo='ppa:tsuru/ppa' update_cache=yes
+  apt_repository: repo="ppa:{{ tsuru_ppa }}" update_cache=yes
 
 - name: Install packages.
   apt: update_cache=true name="{{ item }}"
