@@ -5,7 +5,7 @@
   apt_repository: repo="{{ tsuru_repo }}" update_cache=yes
 
 - name: Install packages.
-  apt: update_cache=true name="{{ item }}"
+  apt: update_cache=true name="{{ item }}" state=latest
   with_items:
     - python-software-properties
     - "{% if tsuru_server_version is defined %}tsuru-server={{ tsuru_server_version }}{% else %}tsuru-server{% endif %}"
