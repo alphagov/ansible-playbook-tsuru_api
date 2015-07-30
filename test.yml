@@ -19,5 +19,6 @@
     - hipache_host_external_lb: localhost
     - redis_host: localhost
     - redis_port: 6379
+    - tsuru_package_latest: true
   roles:
     - .
