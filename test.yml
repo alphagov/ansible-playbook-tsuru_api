@@ -16,7 +16,10 @@
     - gandalf_port: 8081
     - docker_registry_host: localhost
     - docker_registry_port: 8082
-    - hipache_host_external_lb: localhost
+    - tsuru_router_type: hipache
+    - tsuru_router_config:
+        domain: localhost
+        redis-server: localhost:6379
     - redis_host: localhost
     - redis_port: 6379
     - tsuru_package_latest: true
