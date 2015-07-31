@@ -5,12 +5,12 @@
   apt_repository: repo="{{ tsuru_repo }}" update_cache=yes
 
 - name: Install packages.
-  apt: update_cache=true name="{{ item }}"
+  apt: update_cache=true name="{{ item }}" "state={% if tsuru_package_latest is defined %}latest{% else %}present{% endif %}"
   with_items:
     - python-software-properties
-    - "{% if tsuru_server_version is defined %}tsuru-server={{ tsuru_server_version }}{% else %}tsuru-server{% endif %}"
-    - "{% if tsuru_admin_version is defined %}tsuru-admin={{ tsuru_admin_version }}{% else %}tsuru-admin{% endif %}"
-    - "{% if tsuru_client_version is defined %}tsuru-client={{ tsuru_client_version }}{% else %}tsuru-client{% endif %}"
+    - "tsuru-server{% if tsuru_server_version is defined and tsuru_package_latest is not defined %}={{ tsuru_server_version }}{% endif %}"
+    - "tsuru-admin{% if tsuru_admin_version is defined and tsuru_package_latest is not defined %}={{ tsuru_admin_version }}{% endif %}"
+    - "tsuru-client{% if tsuru_client_version is defined and tsuru_package_latest is not defined %}={{ tsuru_client_version }}{% endif %}"
 
 - name: Copy configuration file.
   template: src=tsuru.conf.j2 dest=/etc/tsuru/tsuru.conf

@@ -28,6 +28,7 @@ Role Variables
 * `tsuru_server_version` - The version of the tsuru server package to be installed
 * `tsuru_client_version` - The version of the tsuru client package to be installed
 * `tsuru_admin_version` - The version of the tsuru admin package to be installed
+* `tsuru_package_latest` - Install the latest version of all packages, note this is mutually exclusive with options, `tsuru_server_version`, `tsuru_client_version` and `tsuru_admin_version`
 * `tsuru_repo` repo argument for Ansible's [`apt_repository`](http://docs.ansible.com/ansible/apt_repository_module.html) module, defaults to `ppa:tsuru/ppa`
 
 
