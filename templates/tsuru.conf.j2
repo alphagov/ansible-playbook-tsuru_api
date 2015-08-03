@@ -40,7 +40,9 @@ routers:
 {% for key, val in tsuru_router_config.iteritems() %}
     {{ key }}: {{ val }}
 {% endfor %}
-queue: redis
+queue:
+  mongo-url: {{mongodb_host}}:{{mongodb_port}}
+  mongo-database: queuedb
 pubsub:
   redis-host: {{redis_host}}
   redis-port: {{ redis_port}}
