@@ -20,7 +20,8 @@ Role Variables
 * ` gandalf_host_external` - External hostname of the Gandalf server
 * ` gandalf_port ` - The port number upon which you wish to run Gandalf
 * ` gandalf_host_internal ` - The internal hostname of the Gandalf server.
-* `hipache_host_external_lb` - The external Hipache hostname for loadbalancer.
+* `tsuru_router_type` - Type of router.
+* `tsuru_router_config` - Hash of router config options. Must always include `domain`.
 * `redis_host` - The redis hostname.
 * `redis_port` - The redis port.
 * ` docker_registry_host ` - The Docker registry hostname.

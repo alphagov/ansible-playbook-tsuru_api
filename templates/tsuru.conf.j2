@@ -22,7 +22,7 @@ docker:
   registry: {{ docker_registry_host }}:{{ docker_registry_port }}
   collection: docker
   repository-namespace: tsuru
-  router: hipache
+  router: {{ tsuru_router_type }}
   deploy-cmd: /var/lib/tsuru/deploy
   run-cmd:
     bin: /var/lib/tsuru/start
@@ -35,10 +35,11 @@ docker:
     active-monitoring-interval: {{ healing_active_monitoring_interval }}
     heal-containers-timeout: {{ healing_heal_containers_timeout }}
 routers:
-  hipache:
-    type: hipache
-    domain: {{hipache_host_external_lb}}
-    redis-server: {{redis_host}}:{{redis_port}}
+  {{ tsuru_router_type }}:
+    type: {{ tsuru_router_type }}
+{% for key, val in tsuru_router_config.iteritems() %}
+    {{ key }}: {{ val }}
+{% endfor %}
 queue: redis
 pubsub:
   redis-host: {{redis_host}}
